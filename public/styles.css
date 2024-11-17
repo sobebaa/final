@@ -1,0 +1,247 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://i.redd.it/gc3ooojju8i11.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-attachment: fixed;
+    font-family: 'Times New Roman', sans-serif;
+    color: #230c18;
+}
+
+nav a {
+    color: #444;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    position: relative;
+}
+
+nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #444;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+    width: 100%;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 56px);
+    padding: 0 20px;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background-color: #79d7c9;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #a05a9a;
+}
+
+.carousel-inner img {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.image-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    background-color: #79d7c9 !important;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 15px;
+    margin: 5px;
+    width: 100%;
+    font-size: 16px; 
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #a05a9a !important;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    width: 100%;
+}
+
+form h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+input[type="submit"] {
+    background-color: #79d7c9;
+    color: #fff;
+    padding: 15px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #a05a9a;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.password-toggle {
+    padding: 0 8px;
+    height: 100%;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-left: none;
+    cursor: pointer;
+}
+
+.password-toggle:hover {
+    background-color: #ced4da;
+}
+
+footer {
+    background-color: rgba(212, 232, 229, 0.8);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    color: #444;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.toast.error {
+    background-color: #dc3545;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+form .form input, form .form select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form .form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
