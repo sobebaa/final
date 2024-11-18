@@ -6,7 +6,6 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const axios = require('axios');
-const apiRoutes = require('./routes/apiRoutes');
 const authRoutes = require('./routes/authRoutes');
 const portfolioRoutes = require('./routes/portfolioRoutes');
 
@@ -42,7 +41,6 @@ function isAdmin(req, res, next) {
 
 app.use('/auth', authRoutes);
 app.use('/portfolio', portfolioRoutes);
-app.use('/api', apiRoutes);
 app.use('/admin', portfolioRoutes);
 app.use(express.static('public'));
 
