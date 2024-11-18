@@ -1,0 +1,156 @@
+Portfolio Application
+
+This is a Node.js app for managing portfolios. Users can register (using 2FA), log in, view portfolio items, and interact with cat image and trivia APIs. Admin users can (in our imagination) add, update, and delete portfolio items.
+
+Table of Contents  
+1. Setup Instructions  
+2. API Details  
+3. Design Rationale  
+4. 2FA Setup  
+5. Password Information  
+6. Files Review  
+
+Setup Instructions  
+
+Requirements:  
+- Node.js  
+- MongoDB  
+- An email service (to send 2FA tokens)  
+
+Steps:  
+1. Install dependencies  
+
+2. Create a `.env` file and add these variables:  
+
+   MONGO_URI=  
+   CAT_API_KEY=  
+   JWT_SECRET=  
+
+3. Start the app:  
+   node server.js  
+
+   This will run the server at `http://localhost:3000`.  
+
+API Details  
+
+The app uses two external APIs:  
+
+1. Cat API  
+   Endpoint: `/catAPI`  
+   Fetches a random cat image.  
+   Response: A URL of a random cat image.  
+
+2. Trivia API  
+   Endpoint: `/trivia`  
+   Fetches random trivia questions.  
+   Response: A list of trivia questions.  
+
+Design Rationale  
+
+The app uses Express.js with user authentication and role-based access control:  
+
+User Roles (in our imagination):  
+   admin: Full access to manage portfolio items.  
+   editor: Can manage their own portfolio.  
+
+2FA: After registration, a token is sent to the user's email. They need to enter this token to verify their account. The token expires after 10 minutes.  
+
+MongoDB stores user and portfolio data.  
+
+Session Management is handled by `express-session`.  
+
+2FA Setup  
+
+How 2FA works:  
+1. After registration, a JWT token is sent to the user's email.  
+2. The user enters the token on the `/verify` page to complete registration.  
+3. After successful verification, the user is redirected to the login page.  
+
+Note: The token expires after 10 minutes. If expired, the user must register again to get a new token.  
+
+Password Information  
+
+Passwords are hashed using `bcryptjs`.  
+During registration, the password is securely stored after hashing.  
+During login, the provided password is checked against the hashed password.  
+
+Files Review  
+
+1. Root Files  
+
+`server.js`:  
+  The main entry point of the application. Handles server setup, routing, and core application logic.  
+
+`.env`:  
+  Configuration file for sensitive information like API keys and database connection strings.  
+
+`.gitignore`:  
+  Specifies files and directories that Git should ignore, such as `node_modules` and `.env`.  
+
+`package.json` & `package-lock.json`:  
+  Define the project's dependencies, metadata, and scripts. Lock file ensures consistent dependency versions.  
+
+`README.md/report.txt`:  
+  Contains project documentation, including setup instructions and API details.  
+
+2. middlewares Directory  
+
+`roles.js`:  
+  Middleware for role-based access control, verifying user roles like admin or editor.  
+
+3. models Directory  
+
+`User.js`:  
+  Defines the database schema for user information, including fields like email, password, and roles.  
+
+`PortfolioItem.js`:  
+  Specifies the database schema for portfolio items, such as descriptions and associated media.  
+
+4. modules Directory  
+
+`mailer.js`:  
+  Handles email functionality, such as sending verification tokens for two-factor authentication.  
+
+5. public Directory  
+
+`styles.css`:  
+  Contains CSS styles for the web application.  
+
+`images/`:  
+  A folder for static image assets used within the application.  
+
+6. routes Directory  
+
+`authRoutes.js`:  
+  Defines routes related to user authentication processes, such as registration, login, and verification.  
+
+`portfolioRoutes.js`:  
+  Handles routes related to portfolio management, such as creating, updating, and deleting portfolio items.  
+
+7. views Directory  
+
+This directory contains EJS templates for rendering dynamic web pages.  
+
+`adminDashboard.ejs`:  
+  Dashboard interface for administrators to manage portfolio items.  
+
+`cat.ejs`:  
+  Displays a random cat image fetched from the Cat API.  
+
+`login.ejs`:  
+  Template for the user login page.  
+
+`portfolio.ejs`:  
+  Renders the user's portfolio page.  
+
+`register.ejs`:  
+  Template for the user registration page.  
+
+`server.ejs`:  
+  The main landing page of the application.  
+
+`trivia.ejs`:  
+  Displays trivia questions fetched from the Trivia API.  
+
+`verify.ejs`:  
+  Page for entering verification tokens during two-factor authentication.  
